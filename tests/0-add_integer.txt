@@ -2,10 +2,12 @@
 0-add_integer function
 ======================
 
-Function that adds 2 integers
+List of proffs for a function that adds 2 integers
+The parameters are to ints
+The b parameter is setted to 98
 
 Importing the function:
-    >>> add_integer = __import__
+    >>> add_integer = __import__('0-add_integer').add_integer
 
 Number type
 
@@ -66,10 +68,10 @@ Al infinito y más allá:
     >>> add_integer(float('inf'))
     Traceback (most recent call last):
         ...
-    2
+    OverflowError: cannot convert float infinity to integer
 
 Fuera de la familia:
     >>> add_integer(float('nan'))
     Traceback (most recent call last):
         ...
-    2    
+    ValueError: cannot convert float NaN to integer
