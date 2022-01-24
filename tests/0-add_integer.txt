@@ -29,12 +29,16 @@ Add float and int:
 
 Add pos and neg:
     >>> add_integer(1, -2)
+    -1
 
 Add neg and pos:
     >>> add_integer(-4, 5)
+    1
 
 Add neg and neg:
     >>> add_integer(-4, -6)
+    -10
+
 
 Strings
 
@@ -71,7 +75,7 @@ Al infinito y más allá:
     OverflowError: cannot convert float infinity to integer
 
 Fuera de la familia:
-    >>> add_integer(float('nan'))
+    >>> add_integer(float('NaN'))
     Traceback (most recent call last):
         ...
     ValueError: cannot convert float NaN to integer
