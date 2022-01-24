@@ -7,6 +7,9 @@ class Rectangle:
     """
     Class Rectangle
     """
+
+    number_of_instances = 0
+
     
     def __init__(self, width=0, height=0):
         """
@@ -17,6 +20,7 @@ class Rectangle:
         """
         self.height = height
         self.width = width
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -56,3 +60,29 @@ class Rectangle:
             return 0
         else:
             return (self.__height + self.__width) * 2
+
+    def __str__(self):
+        """str method to retur a rectangle made with char '#'"""
+        out = ""
+        if self.__width == 0 or self.__height == 0:
+            return out
+        else:
+            i = self.__height
+            while i:
+                out += "#" * self.__width
+                if i != 1:
+                    out += "\n"
+                i += -1
+            return out
+
+    def __repr__(self):
+        """repr method to retur a rectangle made with char '#'"""
+        a = str(self.__width)
+        b = str(self.__height)
+        c = "Rectangle(" + a + "," + b + ")"
+        return c
+
+    def __del__(self):
+        """Printing menssage when deleting"""
+        print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1

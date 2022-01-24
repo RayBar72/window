@@ -3,10 +3,15 @@
     Function that defines a rectangle
 """
 
+
 class Rectangle:
     """
     Class Rectangle
     """
+
+    number_of_instances = 0
+    print_symbol = "#"
+
     
     def __init__(self, width=0, height=0):
         """
@@ -17,6 +22,7 @@ class Rectangle:
         """
         self.height = height
         self.width = width
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -56,3 +62,48 @@ class Rectangle:
             return 0
         else:
             return (self.__height + self.__width) * 2
+
+    def __str__(self):
+        """str method to retur a rectangle made with char '#'"""
+        out = ""
+        if self.__width == 0 or self.__height == 0:
+            return out
+        else:
+            i = self.__height
+            while i:
+                out += str(self.print_symbol) * self.__width
+                if i != 1:
+                    out += "\n"
+                i += -1
+            return out
+
+    def __repr__(self):
+        """repr method to retur a rectangle made with char '#'"""
+        a = str(self.__width)
+        b = str(self.__height)
+        c = "Rectangle(" + a + "," + b + ")"
+        return c
+
+    def __del__(self):
+        """Printing menssage when deleting"""
+        print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """Method that compares two rectangles based on their areas"""
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        else:
+            return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """ Returns a square of size"""
+        width = size
+        height = size
+        return cls(width, height)

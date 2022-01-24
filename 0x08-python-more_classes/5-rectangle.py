@@ -3,7 +3,6 @@
     Function that defines a rectangle
 """
 
-
 class Rectangle:
     """
     Class Rectangle
@@ -46,3 +45,39 @@ class Rectangle:
         if height <= 0:
             raise TypeError("height must be >= 0")
         self.__height = height
+
+    def area(self):
+        """Function that returns the area of a rectangle"""
+        return self.__height * self.__width
+
+    def perimeter(self):
+        """Function that returns the perimeter of a rectangle"""
+        if self.__width == 0 or self.__height == 0:
+            return 0
+        else:
+            return (self.__height + self.__width) * 2
+
+    def __str__(self):
+        """str method to retur a rectangle made with char '#'"""
+        out = ""
+        if self.__width == 0 or self.__height == 0:
+            return out
+        else:
+            i = self.__height
+            while i:
+                out += "#" * self.__width
+                if i != 1:
+                    out += "\n"
+                i += -1
+            return out
+
+    def __repr__(self):
+        """repr method to retur a rectangle made with char '#'"""
+        a = str(self.__width)
+        b = str(self.__height)
+        c = "Rectangle(" + a + "," + b + ")"
+        return c
+
+    def __del__(self):
+        """Printing menssage when deleting"""
+        print("Bye rectangle...")
