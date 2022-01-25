@@ -1,13 +1,13 @@
-======================
-0-add_integer function
-======================
+================
+2-matrix_divided
+================
 
-List of proffs for a function that adds 2 integers
+List of proffs for a function that divides all elements of a matrix
 The parameters are to ints
-The b parameter is setted to 98
+All elements of the matrix most be of same size
 
 Importing the function:
-    >>> add_integer = __import__('0-add_integer').add_integer
+    >>> matrix_divided = __import__('2-matrix_divided ').add_integer
 
 Number type
 
