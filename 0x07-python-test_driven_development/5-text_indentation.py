@@ -6,9 +6,6 @@ text: has to be an string
 """
 
 
-from hashlib import new
-
-
 def text_indentation(text):
     """Function that insert new lines"""
     if type(text) != str:
@@ -34,4 +31,5 @@ def text_indentation(text):
         j = j + 1
     for n in new2:
         print("{:s}".format(n))
-        print()
+        if not new2[-1]:
+            print()

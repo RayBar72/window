@@ -11,7 +11,7 @@ Importing the function:
 
 Basic scenary:
     >>> say_my_name("Raymundo", "Barrera")
-    "My name is Raymundo Barrera"
+    My name is Raymundo Barrera
 
 No string first_name:
     >>> say_my_name(007, "Barrera")
@@ -28,7 +28,7 @@ No string last_name:
 
 Only first_name:
     >>> say_my_name("Raymundo", 007)
-    "Raymundo"
+    Raymundo
 
 Only last_name:
     >>> say_my_name(, "Barrera")
