@@ -5,12 +5,10 @@ add_integer:
     Return the sum of them
 """
 
+
 def add_integer(a, b=98):
     """
     Adds two integers
-        Args:
-            a: int
-            b: int setted to 98
     """
     if type(a) == float:
         a = int(a)
