@@ -2,86 +2,66 @@
 2-matrix_divided
 ================
 
-List of proffs for a function that divides all elements of a matrix
-The parameters are to ints
-All elements of the matrix most be of same size
+Objetives
+Checking if al items in matrix are floats
+Checking if lenght of lists are the same
+Checking if divisor is a int and no negative
 
 Importing the function:
-    >>> matrix_divided = __import__('2-matrix_divided ').add_integer
+    >>> matrix_divided = __import__('2-matrix_divided ').matrix_divided
 
-Number type
+Basic scenary:
+    >>> matrix = [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [0, 0, 0, 0, 0]]
+    >>> print(matrix_divided(matrix, 2))
+    [[0.0, 0.5, 1.0, 1.5, 2.0], [2.5, 3.0, 3.5, 4.0, 4.5], [0.0, 0.0, 0.0, 0.0, 0.0]]
 
-Add integers:
-    >>> add_integer(2, 3)
-    5
+Negative scenary:
+    >>> matrix = [[-0, -1, -2, -3, -4], [-5, -6, -7, -8, -9], [0, 0, 0, 0, 0]]
+    >>> print(matrix_divided(matrix, -2))
+    [[0.0, 0.5, 1.0, 1.5, 2.0], [2.5, 3.0, 3.5, 4.0, 4.5], [0.0, 0.0, 0.0, 0.0, 0.0]]
 
-Add floats:
-    >>> add_integer(3.0, 4.5)
-    7
-
-Add int and float:
-    >>> add_integer(1, 1.9)
-    2
-
-Add float and int:
-    >>> add_integer(3.1416, 1)
-    4
-
-Add pos and neg:
-    >>> add_integer(1, -2)
-    -1
-
-Add neg and pos:
-    >>> add_integer(-4, 5)
-    1
-
-Add neg and neg:
-    >>> add_integer(-4, -6)
-    -10
-
-
-Strings
-
-Add string and int:
-    >>> add_integer('pruebita', 11)
-    Traceback (most recent call last):
-     	...
-     TypeError: a must be an integer
-
-Add int and string:
-    >>> add_integer(100, 'pruebita')
-    Traceback (most recent call last):
-     	...
-     TypeError: b must be an integer
-
-Add string and string:
-    >>> add_integer('pruebita', 'pruebita')
-    Traceback (most recent call last):
-     	...
-     TypeError: a must be an integer
-
-None things, one and great
-
-No argument:
-    >>> add_integer(None)
+No float or int:
+    >>> matrix = [['a', 'b', 'c', 1], [0, 0, 0, 0]]
+    >>> print(matrix_divided(matrix, 2))
     Traceback (most recent call last):
         ...
-    TypeError: a must be an integer
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-Empty:
-    >>> add_integer()
+Div int or float:
+    >>> matrix = [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [0, 0, 0, 0, 0]]
+    >>> print(matrix_divided(matrix, 'z'))
     Traceback (most recent call last):
         ...
-    TypeError: add_integer() missig 1 required positional argument: 'a'
+    TypeError: div must be a number
 
-Al infinito y más allá:
-    >>> add_integer(float('inf'))
+Zero case:
+    >>> matrix = [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [0, 0, 0, 0, 0]]
+    >>> print(matrix_divided(matrix, 0))
     Traceback (most recent call last):
         ...
-    OverflowError: cannot convert float infinity to integer
+    ZeroDivisionError: division by zero
 
-Fuera de la familia:
-    >>> add_integer(float('NaN'))
+List case:
+    >>> matrix = [0, 1, 2, 3, 4]
+    >>> print(matrix_divided(matrix, 2))
     Traceback (most recent call last):
         ...
-    ValueError: cannot convert float NaN to integer
+    TypeError:matrix must be a matrix (list of lists) of integers/floats
+
+Same size:
+    >>> matrix = [[0, 1, 2, 3, 4], [5, 6], [0, 0, 0, 0, 0]]
+    >>> print(matrix_divided(matrix, 2))
+    Traceback (most recent call last):
+        ...
+    TypeError: Each row of the matrix must have the same size
+
+No input - matrix:
+    >>> matrix = [[]]
+    >>> print(matrix_divided(matrix, 2))
+    [[]]
+
+No inputs:
+    >>> print(matrix_divided())
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
