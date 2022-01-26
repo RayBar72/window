@@ -7,7 +7,9 @@ text: has to be an string
 
 
 def text_indentation(text):
-    """Function that insert new lines"""
+    """
+        Function that insert new lines
+    """
     if type(text) != str:
         raise TypeError("text must be a string")
     temp = ""
@@ -20,7 +22,7 @@ def text_indentation(text):
     for i in range(len(temp)):
         if temp[i] == ":" or temp[i] == "?" or temp[i] == ".":
             new.append(text[a:i - 1])
-            a = i
+            a = i - 1
             i = i + 1
         else:
             i = i + 1
@@ -29,7 +31,4 @@ def text_indentation(text):
     while j < len(new):
         new2.append(new[j].strip())
         j = j + 1
-    for n in new2:
-        print("{:s}".format(n))
-        if not new2[-1]:
-            print()
+    print("\n\n".join(new2), end="")
