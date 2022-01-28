@@ -36,7 +36,7 @@ static hash_node_t *node_setting(hash_node_t **head, char *key, char *value)
 		return (NULL);
 	new->key = key;
 	new->value = value;
-	new->key = *head;
+	new->next = *head;
 	*head = new;
 	return (new);
 }
@@ -54,7 +54,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = 0, counter = 0;
 	hash_node_t *new = NULL, *search = NULL;
-	char *var = NULL, key_resp = NULL;
+	char *var = NULL, *key_resp = NULL;
 
 	if (!ht || !key || !value || value[0] == '\0')
 		return(0);
