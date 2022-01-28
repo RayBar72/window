@@ -21,7 +21,8 @@
                 "-Wextra",
                 "-pedantic",
                 "-std=gnu89"
-            ]
+            ],
+            "configurationProvider": "twxs.cmake"
         }
     ],
     "version": 4
