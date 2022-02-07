@@ -1,17 +1,17 @@
 #!/usr/bin/python3
-"""Container with Base class"""
+"""Container with Rectangle class"""
 from models.base import Base
 
 
 class Rectangle(Base):
-    """Class Rectangle. Inherits from Base"""
+    """Class that inherits from class Base"""
     def __init__(self, width, height, x=0, y=0, id=None):
+        """Initializes class Rectangle"""
         super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
-
     @property
     def width(self):
         """Attr width"""
@@ -20,7 +20,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """Setting width"""
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
@@ -34,7 +34,7 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """Setting height"""
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("height must be an integer")
         if value <= 0:
             raise ValueError("height must be > 0")
@@ -42,13 +42,13 @@ class Rectangle(Base):
 
     @property
     def x(self):
-        """Attr x"""
+        """X attr"""
         return self.__x
 
     @x.setter
     def x(self, value):
-        """Setting x"""
-        if type(value) != int:
+        """Settint x"""
+        if type(value) is not int:
             raise TypeError("x must be an integer")
         if value < 0:
             raise ValueError("x must be >= 0")
@@ -56,57 +56,57 @@ class Rectangle(Base):
 
     @property
     def y(self):
-        """Attr y"""
+        """Y atrr"""
         return self.__y
 
     @y.setter
     def y(self, value):
         """Setting y"""
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
 
+    def __str__(self):
+        """ __str__ method """
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
+                                                        self.__y, self.__width,
+                                                        self.__height))
+
+    def to_dictionary(self):
+        """Representation of Rectangle"""
+        d = {"id": self.id, "width": self.__width, "height": self.__height,
+             "x": self.__x, "y": self.__y}
+        return d
+
+    def update(self, *args, **kwargs):
+        """Update with *args **kwargs"""
+        attrs = ["id", "width", "height", "x", "y"]
+        for elem in range(len(args)):
+            for attr in range(len(attrs)):
+                if attr == elem:
+                    setattr(self, attrs[attr], args[elem])
+                    break
+
+        if not args or len(args) == 0:
+            for key, val in kwargs.items():
+                for attr in range(len(attrs)):
+                    if key == attrs[attr]:
+                        setattr(self, attrs[attr], val)
+                        break
+
     def area(self):
-        """Returns area of the rectangle"""
+        """Area of a rectangle"""
         return self.__width * self.__height
 
     def display(self):
-        """Prints a rectangle with '#'
-        y is newline, x is space
-        """
-        if self.__y != 0:
-            for newline in range(self.__y):
-                print()
-
+        """Representation of the rectangle with '#'"""
+        for space in range(self.__y):
+            print("")
         for row in range(self.__height):
-            print((self.__x * " ") + (self.__width * '#'))
-
-    def __str__(self):
-        """Returns formatted"""
-        return "[{}] ({}) {}/{} - {}/{}".format(self.__class__.__name__,
-                                                self.id, self.__x, self.__y,
-                                                self.__width, self.__height)
-
-    def update(self, *args, **kwargs):
-        """Updates rectangle values"""
-        if len(kwargs) != 0:
-            for k, v in kwargs.items():
-                setattr(self, k, v)
-        elif len(args) != 0:
-            try:
-                self.id = args[0]
-                self.__width = args[1]
-                self.__height = args[2]
-                self.__x = args[3]
-                self.__y = args[4]
-            except IndexError:
-                pass
-        else:
-            print()
-
-    def to_dictionary(self):
-        """Dict repr"""
-        return {'x': self.__x, 'y': self.__y, 'id': self.id,
-                'height': self.__height, 'width': self.__width}
+            for move in range(self.__x):
+                print(" ", end="")
+            for col in range(self.__width):
+                print("#", end="")
+            print("")
